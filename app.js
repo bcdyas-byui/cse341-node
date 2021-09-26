@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-   res.status(404).render('404', { pageTitle: 'Page Not Found' }); //0:36 working with ejs
+   res.status(404).render('404', { pageTitle: 'Page Not Found' });
 });
 
 app.listen(PORT);
