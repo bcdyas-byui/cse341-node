@@ -43,9 +43,9 @@ module.exports = class Cart {
          }
          const updatedCart = { ...JSON.parse(fileContent) };
          const product = updatedCart.products.findIndex(prod => prod.id === id);
-         if (!product) {
-            return;
-         }
+         // if (!product) {
+         //    return;
+         // } // from segment Dynamic Routes & Advanced Models : Fixing a Delete Product Bug
          const productQty = product.qty;
          updatedCart.products = updatedCart.products.filter(
             prod => prod.id !== id
