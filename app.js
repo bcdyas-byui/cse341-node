@@ -1,13 +1,29 @@
 const path = require('path');
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const errorController = require('./controllers/error');
 const User = require('./models/user')
 
 const PORT = process.env.PORT || 5000;
+
+const corsOptions = {
+   origin: "https://dyas-ecommerceapp.herokuapp.com/",
+   optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+   useUnifiedTopology: true,
+   useNewUrlParser: true,
+   useCreateIndex: true,
+   useFindAndModify: false,
+   family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://benjamin:MUmt9mMmXqpaV090@cse341-node.bwogy.mongodb.net/shop?retryWrites=true&w=majority';
 
 const app = express();
 
@@ -36,7 +52,7 @@ app.use(errorController.get404);
 
 mongoose
 .connect(
-   'mongodb+srv://benjamin:MUmt9mMmXqpaV090@cse341-node.bwogy.mongodb.net/shop?retryWrites=true&w=majority'
+   MONGODB_URL, options
    )
    .then(result => {
       User.findOne().then(user => {
