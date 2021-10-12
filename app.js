@@ -7,6 +7,8 @@ const cors = require('cors');
 const errorController = require('./controllers/error');
 const User = require('./models/user')
 
+const app = express();
+
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
@@ -18,14 +20,14 @@ app.use(cors(corsOptions));
 const options = {
    useUnifiedTopology: true,
    useNewUrlParser: true,
-   useCreateIndex: true,
-   useFindAndModify: false,
+   // useCreateIndex: true,
+   // useFindAndModify: false,
    family: 4
 };
 
 const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://benjamin:MUmt9mMmXqpaV090@cse341-node.bwogy.mongodb.net/shop?retryWrites=true&w=majority';
 
-const app = express();
+//const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
