@@ -1,17 +1,17 @@
 const bcrypt = require('bcryptjs');
-// const nodemailer = require('nodemailer');
-// const sendgridTransport = require('nodemailer-sendgrid-transport');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 const User = require('../models/user');
 
-// const transporter = nodemailer.createTransport(
-//    sendgridTransport({
-//      auth: {
-//        api_key:
-//          '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'
-//      }
-//    })
-//  );
+const transporter = nodemailer.createTransport(
+   sendgridTransport({
+     auth: {
+       api_key:
+         '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'
+     }
+   })
+ );
 
 exports.getLogin = (req, res, next) => {
    let message = req.flash('error');
